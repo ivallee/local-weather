@@ -4,8 +4,10 @@ $( document ).ready(function() {
     
   function getWeather(lat, long) {
     var query = weatherAPI + '/current?lat=' + lat + '&lon=' + long;
-    $.getJSON(query, function(data) {
-      console.log(data);
+    $.getJSON(query, function(weatherData) {
+      $('#city').html(weatherData.name);
+      $('#country').html(weatherData.sys.country);
+      $('#temp').html(weatherData.main.temp.toFixed(1));
       
     });
   }
