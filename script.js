@@ -8,7 +8,9 @@ $( document ).ready(function() {
       $('#city').html(weatherData.name);
       $('#country').html(weatherData.sys.country);
       $('#temp').html(weatherData.main.temp.toFixed(1));
-      
+      var img = $('<img id="dynamic">');
+      img.attr('src', weatherData.weather[0].icon);
+      img.appendTo('.icon');
     });
   }
 
