@@ -1,9 +1,13 @@
 $( document ).ready(function() {
   
-  var weatherAPI = 'https://fcc-weather-api.glitch.me';
+  var weatherAPI = 'https://fcc-weather-api.glitch.me/api';
     
-  function getWeather(latitude, longitude) {
-    
+  function getWeather(lat, long) {
+    var query = weatherAPI + '/current?lat=' + lat + '&lon=' + long;
+    $.getJSON(query, function(data) {
+      console.log(data);
+      
+    });
   }
 
   if ("geolocation" in navigator) {
