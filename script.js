@@ -1,7 +1,19 @@
 $( document ).ready(function() {
   
-  var api = 'https://fcc-weather-api.glitch.me';
+  var weatherAPI = 'https://fcc-weather-api.glitch.me';
     
-   console.log('suuup!');
+  function getWeather(latitude, longitude) {
+    
+  }
+
+  if ("geolocation" in navigator) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var lat = position.coords.latitude.toFixed(2);
+      var long = position.coords.longitude.toFixed(2);
+
+      getWeather(lat, long);
+
+    });
+  }
   
   });
