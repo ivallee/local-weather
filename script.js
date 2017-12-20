@@ -11,11 +11,12 @@ $( document ).ready(function() {
       var img = $('<img id="dynamic">');
       img.attr('src', weatherData.weather[0].icon);
       img.appendTo('.icon');
+      $('.loader').toggleClass('hidden');
+      $('#temp-button').toggleClass('hidden');
     });
   }
 
-  $('#temp-btn').on('click', toggleTempUnit);
-
+  
   function toggleTempUnit(){
     var temp = $('#temp').html();
     if (celsius) {
@@ -31,13 +32,15 @@ $( document ).ready(function() {
     }
   }
 
+  $('#temp-button').on('click', toggleTempUnit);
+  
   if ("geolocation" in navigator) {
     navigator.geolocation.getCurrentPosition(function(position) {
       var lat = position.coords.latitude.toFixed(2);
       var long = position.coords.longitude.toFixed(2);
-
+      
       getWeather(lat, long);
-
+      
     });
   }
   
